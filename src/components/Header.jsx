@@ -2,8 +2,8 @@
  function Header (){
 
     return(
-        <nav className="nav">
-            <h1 className="headingText">Keepr</h1>
+        <nav className="nav p-4">
+            <h1 className="headingText text-white">Keepr</h1>
         </nav>
     )
  }

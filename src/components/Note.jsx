@@ -1,12 +1,10 @@
+function Note(props) {
+  return (
+    <div className="note-container">
+      <h2 className="noteHeading">{props.title}</h2>
+      <p className="noteContent">{props.content} </p>
+    </div>
+  );
+}
 
-function Note (){
-
-    return(
-      <div className="note-container">
-        <h2 className="noteHeading">This is a Note Title</h2>
-        <p className="noteContent">This is a note content </p>
-      </div>
-    )
- }
-
- export default Note
+export default Note;

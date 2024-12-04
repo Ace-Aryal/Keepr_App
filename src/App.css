@@ -52,3 +52,39 @@ body {
 .footer p {
   font-size: small;
 }
+
+@media (min-width: 640px) {
+  .input-container {
+    width: 100vw;
+    height: 20vh;
+  }
+}
+
+.top {
+  display: flex;
+  justify-content: center;
+}
+
+.input-container {
+  width: 50vw;
+  height: 20vh;
+  background-color: #fff;
+  align-content: center;
+  box-shadow: 0 0 8px gray;
+  padding: 1rem;
+}
+#input-title,
+#input-content {
+  width: 100%;
+  outline: none;
+  border: none;
+}
+
+#input-title {
+  height: 20%;
+  font-size: medium;
+}
+#input-content {
+  height: 60%;
+  font-size: small;
+}

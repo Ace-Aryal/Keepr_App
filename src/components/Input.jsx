@@ -17,17 +17,15 @@ function Input(props) {
 
   function AddNotes(e) {
     e.preventDefault();
+
+    const newNote = {
+      id: titleText,
+      title: titleText,
+      content: contentText,
+    };
+
     setNotes((prevValue) => {
-      return {
-        ({
-        ...prevValue,
-        },
-        {
-        title: titleText,
-        content: contentText,
-        
-        })
-      };
+      return [...prevValue, newNote];
     });
   }
   return (
@@ -55,7 +53,7 @@ function Input(props) {
         </form>
       </section>
       {notes.map((note) => {
-        <Note title={note.title} content={note.title} />;
+        <Note title={note.title} content={note.content} />;
       })}
     </>
   );

@@ -13,9 +13,6 @@ function App() {
     <>
       <Header />
       <Input />
-      {myNotes.map((note) => {
-        return <Note key={note.id} title={note.title} content={note.content} />;
-      })}
       <Footer />
     </>
   );

@@ -27,6 +27,8 @@ function Input(props) {
     setNotes((prevValue) => {
       return [...prevValue, newNote];
     });
+    setTitleText("")
+    setContentText("")
   }
   return (
     <>
@@ -53,7 +55,7 @@ function Input(props) {
         </form>
       </section>
       {notes.map((note) => {
-        <Note title={note.title} content={note.content} />;
+       return <Note title={note.title} content={note.content} />;
       })}
     </>
   );

@@ -1,8 +1,21 @@
 function Note(props) {
   return (
     <div className="note-container" key={props.title}>
-      <h2 className="noteHeading">{props.title}</h2>
-      <p className="noteContent">{props.content} </p>
+      <input type="text" className="noteHeading" value={props.title} readOnly />
+      <textarea
+        type="text"
+        className="noteContent"
+        value={props.content}
+        readOnly
+      ></textarea>
+      <button
+        id={props.title}
+        class="deleteNoteBtn"
+        title="delete button"
+        onClick={props.deleteFunction}
+      >
+        Delete Note
+      </button>
     </div>
   );
 }

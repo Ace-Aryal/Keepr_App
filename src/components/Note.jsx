@@ -3,6 +3,7 @@ function Note(props) {
     <div className="note-container" key={props.title}>
       <input type="text" className="noteHeading" value={props.title} readOnly />
       <textarea
+        type="text"
         className="noteContent"
         value={props.content}
         readOnly

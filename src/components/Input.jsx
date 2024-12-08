@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Note from "./Note";
 function Input(props) {
   const [titlePHolder, setTitlePHolder] = useState("Title");
   const [contentPHolder, setContentPHolder] = useState("Note goes here");
   const [titleText, setTitleText] = useState("");
   const [contentText, setContentText] = useState("");
-  const [notes, setNotes] = useState([]);
+  const savedNotes = JSON.parse(localStorage.getItem("noteData")) || [];
+  const [notes, setNotes] = useState(savedNotes);
+
+  useEffect(() => {
+    //for local storage
+    localStorage.setItem(`noteData`, JSON.stringify(notes));
+  }, [notes]);
+
   function handleTitleChange(e) {
     e.preventDefault();
     const { value, name } = e.target;
@@ -19,6 +26,7 @@ function Input(props) {
   }
 
   function AddNotes(e) {
+    // create new notes using useState
     e.preventDefault();
 
     const newNote = {
@@ -34,8 +42,10 @@ function Input(props) {
       setContentPHolder("Enter Content For Note");
       return;
     }
+
     let isNotUniqueTitle;
     if (notes.length != 0) {
+      //edge cases
       isNotUniqueTitle = notes.some((note) => note.title === newNote.title);
     }
 
@@ -48,6 +58,7 @@ function Input(props) {
     }
 
     setNotes((prevValue) => {
+      // if the new note is unique , adding it to notes array
       return [...prevValue, newNote];
     });
     setTitleText("");
@@ -56,10 +67,11 @@ function Input(props) {
     setContentPHolder("Note Goes Here...");
   }
   function deleteFn(e) {
+    // deletes note
     const { target } = e;
     setNotes((prevValue) => {
       const filteredNewNotes = prevValue.filter((oldNote) => {
-        return oldNote.title !== target.id;
+        return oldNote.title !== target.id; // filter out the clicked note
       });
       return filteredNewNotes;
     });
@@ -92,10 +104,11 @@ function Input(props) {
       </section>
       {notes.map((note) => {
         return (
+          // mapping over notes array to render all notes
           <Note
             title={note.title}
             content={note.content}
-            deleteFunction={deleteFn}
+            deleteFunction={deleteFn} // passing delete function to vhild component
           />
         );
       })}
